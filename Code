@@ -1,0 +1,25 @@
+export default function RandomQuoteApp() { const quotes = [ "Belajar coding itu seperti naik sepeda — makin sering jatuh, makin jago.", "Error hari ini adalah skill besok.", "Ngoding santai, hasil maksimal.", "Kopi + keyboard = ide tanpa batas.", "Debugging adalah seni mencari jarum di tumpukan jerami." ];
+
+const randomQuote = () => { return quotes[Math.floor(Math.random() * quotes.length)]; };
+
+return ( <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6"> <div className="bg-white shadow-2xl rounded-3xl p-8 max-w-xl text-center space-y-6"> <h1 className="text-4xl font-bold">Kode Bebas 🎉</h1> <p className="text-gray-600"> Klik tombol untuk mendapatkan quote coding random. </p>
+
+<RandomBox getQuote={randomQuote} />
+  </div>
+</div>
+
+); }
+
+function RandomBox({ getQuote }) { const [quote, setQuote] = React.useState(getQuote());
+
+return ( <div className="space-y-4"> <div className="bg-gray-50 border rounded-2xl p-6 text-lg italic shadow-inner"> “{quote}” </div>
+
+<button
+    onClick={() => setQuote(getQuote())}
+    className="px-6 py-3 rounded-2xl bg-black text-white hover:scale-105 transition-transform"
+  >
+    Quote Baru
+  </button>
+</div>
+
+); }
